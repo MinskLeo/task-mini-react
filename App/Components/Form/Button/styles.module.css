@@ -1,0 +1,34 @@
+.buttonWrapper {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+.button {
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 20px;
+  background: transparent;
+  border: none;
+  box-shadow: 0 0 1px 1px #eee;
+  color: #eee;
+  outline: none;
+  cursor: pointer;
+  transition: .1s;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+.button:active{
+  box-shadow: 0 0 1px 1px #eee;
+  color: rgb(92, 92, 92);
+  background: #eee;
+  transform: scale(1.1);
+}
+
+.disabled {
+  opacity: 0.3;
+}
