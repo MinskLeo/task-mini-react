@@ -4,14 +4,15 @@ import styles from './styles.module.css';
 
 type Props = {
   children: any,
-  style: Object | string
+  style: Object | string,
+  className: string
 }
 
 class FullscreenWrapper extends React.PureComponent<Props> {
   render () {
-    const { children, style } = this.props;
+    const { children, style, className } = this.props;
 
-    return <Div className={styles.fullscreenContainer} style={style}>
+    return <Div className={[styles.fullscreenContainer, className]} style={style}>
       {children}
     </Div>
   }

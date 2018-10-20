@@ -1,5 +1,6 @@
 import ApiHelper from 'App/Helpers/ApiHelper';
 import CookiesHelper from 'App/Helpers/CookieHelper';
+
 import {
   SET_TOKEN
 } from 'App/Redux/AT'
@@ -8,6 +9,7 @@ class AuthService {
   static login (data, dispatch, getState) {
 
     return ApiHelper.instance('auth/login', {},{...data},ApiHelper.METHOD_POST,{})
+    .then(res => ApiHelper.checkStatus(res, dispatch))    
     .then(res => {
       if(res && res.content && res.content.token) {
         console.log('TOKEN: ', res.content.token);
@@ -15,6 +17,8 @@ class AuthService {
           type: SET_TOKEN,
           payload: res.content.token
         });
+        CookiesHelper.setCookie('token',res.content.token);
+
         return res;
       } else {
         console.log('Invalid data');

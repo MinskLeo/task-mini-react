@@ -10,9 +10,6 @@ import {
   login as loginAction,
   checkToken as checkTokenAction
 } from 'App/Redux/AC/AuthActions';
-import {
-  getAccountDetails as getAccountDetailsAction
-} from 'App/Redux/AC/AccountActions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -28,15 +25,10 @@ class AuthLoader extends React.Component<Props> {
 
   componentDidMount = async () => {
     const token = await this.props.checkTokenAction();
-    let redirectTo = '';
+    let redirectTo = '/login';
 
     if(token) {
-      const userDetails = await this.props.getAccountDetailsAction();
-      if(userDetails) {
-        redirectTo = '/account';
-      }
-    } else {
-      redirectTo='/login';
+      redirectTo = '/dashboard';
     }
 
     this.setState({ redirectTo });
@@ -58,8 +50,7 @@ class AuthLoader extends React.Component<Props> {
 const mapDispatchToProps = dispatch => {
   return {
     loginAction: bindActionCreators(loginAction, dispatch),
-    checkTokenAction: bindActionCreators(checkTokenAction, dispatch),
-    getAccountDetailsAction: bindActionCreators(getAccountDetailsAction, dispatch)
+    checkTokenAction: bindActionCreators(checkTokenAction, dispatch)
   }
 }
 

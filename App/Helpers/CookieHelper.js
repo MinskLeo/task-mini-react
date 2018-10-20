@@ -1,5 +1,6 @@
-export default class CookieManager{
+export default class CookieHelper{
    static getCookie = (name) => {
+    console.log(`Getting COOKIE [${name}]`);
     var matches = document.cookie.match(new RegExp(
       "(?:^|; )" + name.replace(/([.$?*|{}()[]\\\/\+^])/g, '\\$1') + "=([^;]*)"
     ));
@@ -7,6 +8,7 @@ export default class CookieManager{
   }
 
    static setCookie = (name, value, options) => {
+    console.log(`Setting COOKIE [${name}]: ${value}`);
     options = options || {};
 
     var expires = options.expires;
@@ -36,8 +38,7 @@ export default class CookieManager{
   }
 
    static deleteCookie = (name) => {
-    this.setCookie(name, "", {
-      expires: -1
-    });
+    console.log(`Deleting COOKIE [${name}]`);
+    this.setCookie(name, "");
   }
 }

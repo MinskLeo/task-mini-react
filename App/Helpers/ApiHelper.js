@@ -1,11 +1,19 @@
 import URL from "url";
 import configs from 'App/Configs';
+import Console from 'App/Helpers/ConsoleHelper';
+import NavigationHelper from 'App/Helpers/NavigationHelper';
+
+// Redux
+import {
+  REMOVE_TOKEN
+} from 'App/Redux/AT';
 
 export default class ApiHelper {
   static METHOD_POST = "POST";
   static METHOD_GET = "GET";
   static METHOD_PUT = "PUT";
   static METHOD_DELETE = "DELETE";
+
 
   static instance(
     endpointUri: String,
@@ -14,7 +22,6 @@ export default class ApiHelper {
     method = ApiHelper.METHOD_GET,
     headers: Object = {}
   ) {
-
     let urlString = `${configs.API_URL}/${endpointUri}`;
 
     const url = URL.parse(urlString);
@@ -30,7 +37,7 @@ export default class ApiHelper {
       };
     }
 
-    const fetchParams = {
+    const fetchParams: RequestInit = {
       method,
       headers
     };
@@ -55,13 +62,29 @@ export default class ApiHelper {
     console.log("URL", URL.format(url));
     console.log("fetchParams", fetchParams);
 
+    // const request = new Request(URL.format(url), fetchParams);
+
     return fetch(URL.format(url), fetchParams)
     .then(res => res.json())
-    .then(res => this.checkStatus(res))
   }
 
-  static checkStatus (response) {
-    console.log('STATUS: ', response.status)
+  static checkStatus (response, dispatch) {
+    Console.Info('STATUS: ', response.status)
+    switch (response.status) {
+      case 403:
+        dispatch({
+          type: REMOVE_TOKEN
+        });
+        NavigationHelper.navigateReplace('/');
+      throw response;
+
+      case 500:
+        Console.Warn(`Internal server error: ${response.status}`);
+      break;
+
+      default: break;
+    }
+
     return response;
   }
 
@@ -70,7 +93,7 @@ export default class ApiHelper {
     const token = state.auth.token;
 
     if(token) {
-      console.log('STATE TOKEN FOUND: ', token)
+      Console.Info('STATE TOKEN FOUND: ', token)
       return token;
     }
 

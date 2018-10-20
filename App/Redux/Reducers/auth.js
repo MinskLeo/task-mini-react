@@ -1,9 +1,12 @@
 import {
-  SET_TOKEN
+  SET_TOKEN,
+  REMOVE_TOKEN
 } from 'App/Redux/AT';
+import CookieHelper from 'App/Helpers/CookieHelper';
+const token = CookieHelper.getCookie('token');
 
 const initialState = {
-  token: ''
+  token: token || ''
 }
 
 export default function auth (state = initialState, action) {
@@ -13,6 +16,10 @@ export default function auth (state = initialState, action) {
         ...state,
         token: action.payload
       }
+    
+    case REMOVE_TOKEN:
+      CookieHelper.setCookie('token', '');
+      return initialState;
 
     default: return state;
   }

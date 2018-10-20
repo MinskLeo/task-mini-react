@@ -1,0 +1,72 @@
+.wrapper {
+  justify-content: flex-start;
+}
+
+.contentPart {
+  flex: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidePart {
+  flex: 1;
+  height: 100%;
+  /* background: #eee; */
+  padding: 20px 20px;
+}
+
+.body {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.taskCard {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  background: rgb(243, 243, 243);
+  cursor: pointer;
+  margin: 20px 0;
+
+  transition: .3s;
+}
+
+.taskCard:hover {
+  transform: translateX(-10%);
+}
+
+.centeredContainer {
+  width: 800px;
+  min-height: 50px;
+  background: rgb(243, 243, 243);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.taskCardMini {
+  padding: 15px;
+  background: #eee;
+}
+
+.taskCardMiniHeader {
+  font-size: 24px;
+}
+
+.contentPartMini {
+  flex: 2;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* background: red; */
+  max-height: 500px;
+  overflow: scroll;
+}

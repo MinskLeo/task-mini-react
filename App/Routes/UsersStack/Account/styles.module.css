@@ -1,0 +1,27 @@
+.avatar {
+  margin-top: -90px;
+}
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 25px;
+}
+
+.heading {
+  margin: 15px 0;
+}
+
+.roles {
+  margin: 2px 0;
+}
+
+.description {
+  margin: 2px 0;
+  margin-bottom: 20px;
+}
+
+.contact {
+  margin: 2px 0;
+}

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import FullscreenBackgroundImage from 'App/Components/FullscreenBackgroundImage';
 import styles from './styles.module.css';
-import { Redirect } from 'react-router-dom';
+
+import NavigationHistory from 'App/Helpers/NavigationHelper';
 
 // Components
 import TextInput from 'App/Components/Form/TextInput';
@@ -26,9 +27,7 @@ class LoginPage extends React.Component<Props> {
     nickname: '',
     password: '',
     nicknameValid: false,
-    passwordValid: false,
-
-    redirectToAccount: false
+    passwordValid: false
   }
 
   onChangeNickname = text => {
@@ -95,14 +94,16 @@ class LoginPage extends React.Component<Props> {
     const data = { nickname, password }
     const result = await this.props.loginAction(data);
     if(result) {
-      this.setState({ redirectToAccount: true });
+      NavigationHistory.navigateReplace('/dashboard');
     }
+  }
+
+  componentDidMount = () => {
+    console.log('History: ', this.props)
   }
 
 
   render () {
-    const { redirectToAccount } = this.props;
-
     return (
       <FullscreenBackgroundImage
         source='http://hdqwalls.com/wallpapers/peyto-lake-canada-mountains-4k-tj.jpg' maskColor='rgb(211, 211, 211,0.3)'
@@ -129,7 +130,6 @@ class LoginPage extends React.Component<Props> {
           disabled={!this.state.nicknameValid || !this.state.passwordValid}
           onClick={this.onSubmitPress}
         >Button!</Button>
-        {redirectToAccount && <Redirect to='/account' />}
       </FullscreenBackgroundImage>
     );
   }

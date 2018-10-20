@@ -1,0 +1,26 @@
+.heading {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.note {
+  color: #333;
+  font-size: 18px;
+}
+
+.subnote {
+  color: rgb(83, 83, 83);
+  font-size: 16px;
+}
+
+.noteItalic {
+  color: rgb(83, 83, 83);
+  font-size: 18px;
+  font-style: italic;
+}
+
+.contact {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
