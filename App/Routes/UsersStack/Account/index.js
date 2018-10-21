@@ -7,6 +7,7 @@ import CenteredContainer from 'App/Components/CenteredContainer';
 import Avatar from 'App/Components/Avatar';
 import TextBlock from 'App/Components/TextBlock';
 import styles from './styles.module.css';
+import AnimatedWrapper from 'App/Components/AnimatedWrapper';
 
 // Redux
 import {
@@ -52,29 +53,31 @@ class Account extends React.Component<Props> {
     return (
       <FullscreenWrapper style={{justifyContent: 'flex-start'}}>
         <Navbar />
-        <CenteredContainer className={styles.contentWrapper}>
-          <Avatar source={account.avatar} size='large' className={styles.avatar} />
-          <TextBlock
-            type='header'
-            className={styles.heading}
-          >{account && (account.name && account.lastname) && `${account.name} ${account.lastname}`}</TextBlock>
-          <TextBlock
-            type='note'
-            className={styles.roles}
-          >{this.renderRoles()}</TextBlock>
-          <TextBlock
-            type='subnote'
-            className={styles.description}
-          >{account.description}</TextBlock>
-          <TextBlock
-            type='phone'
-            className={styles.contact}
-          >{account.phone}</TextBlock>
-          <TextBlock
-            type='email'
-            className={styles.contact}
-          >{account.email}</TextBlock>
-        </CenteredContainer>
+        <AnimatedWrapper>
+          <CenteredContainer className={styles.contentWrapper}>
+            <Avatar source={account.avatar} size='large' className={styles.avatar} />
+            <TextBlock
+              type='header'
+              className={styles.heading}
+            >{account && (account.name && account.lastname) && `${account.name} ${account.lastname}`}</TextBlock>
+            <TextBlock
+              type='note'
+              className={styles.roles}
+            >{this.renderRoles()}</TextBlock>
+            <TextBlock
+              type='subnote'
+              className={styles.description}
+            >{account.description}</TextBlock>
+            <TextBlock
+              type='phone'
+              className={styles.contact}
+            >{account.phone}</TextBlock>
+            <TextBlock
+              type='email'
+              className={styles.contact}
+            >{account.email}</TextBlock>
+          </CenteredContainer>
+        </AnimatedWrapper>
       </FullscreenWrapper>
     );
   }

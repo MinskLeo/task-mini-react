@@ -1,0 +1,17 @@
+.animationEnter {
+  opacity: 0.01;
+}
+
+.animationEnterActive {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.animationLeave {
+  opacity: 1;
+}
+
+.animationLeaveActive {
+  opacity: 0;
+  transition: opacity .5s ease-in;
+}

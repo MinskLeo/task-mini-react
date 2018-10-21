@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import createStore from 'App/Redux/Store';
-import CookieHelper from 'App/Helpers/CookieHelper';
 
 // History
 import { navigator } from 'App/Helpers/NavigationHelper';
@@ -21,6 +20,9 @@ import AccountPage from 'App/Routes/UsersStack/Account';
 // Dashboard
 import Dashboard from 'App/Routes/Dashboard';
 
+// Projects
+import ProjectsList from 'App/Routes/ProjectsStack/ProjectsList';
+
 class Navigation extends React.Component {
   render () {
     return (
@@ -31,6 +33,7 @@ class Navigation extends React.Component {
             <Route exact path='/login' component={LoginPage} />
             <Route exact path='/account' component={AccountPage} />
             <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/projects' component={ProjectsList} />
           </Switch>
         </Router>
       </Provider>

@@ -1,11 +1,12 @@
 import * as React from 'react';
-import FullscreenWrapper from 'App/Components/FullscreenWrapper';
-import Div from 'App/Components/Div';
 import styles from './styles.module.css';
-import TextBlock from 'App/Components/TextBlock';
 
+import TextBlock from 'App/Components/TextBlock';
 import Navbar from 'App/Components/Navbar';
 import TextInput from 'App/Components/Form/TextInput/index';
+import FullscreenWrapper from 'App/Components/FullscreenWrapper';
+import Div from 'App/Components/Div';
+import AnimatedWrapper from 'App/Components/AnimatedWrapper';
 
 class Dashboard extends React.Component {
   state = {
@@ -75,73 +76,25 @@ class Dashboard extends React.Component {
     const { tasks, tasksAdded } = this.state;
 
     return (
-      <FullscreenWrapper className={styles.wrapper}>
-        <Navbar />
-        <Div className={styles.body}>
-          <Div className={styles.contentPart}>
-            <Div className={styles.centeredContainer}>
-              <Div className={styles.sidePart}>
-                {tasksAdded.map((item, index) => {
-                  return <Div className={[styles.taskCard, styles.taskCardMini]}>
-                    <TextBlock type='header' className={styles.taskCardMiniHeader}>{item.taskword}</TextBlock>
-                    <TextBlock type='noteItalic'>{item.description}</TextBlock>
-                  </Div>
-                })}
-              </Div>
-              <Div className={[styles.contentPart, styles.contentPartMini]}>
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Description'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-                <TextInput
-                  value=''
-                  placeholder='Title'
-                />
-              </Div>
+        <FullscreenWrapper className={styles.wrapper}>
+          <Navbar />
+        <AnimatedWrapper>
+          <Div className={styles.body}>
+            <Div className={styles.contentPart}>
+
+            </Div>
+            <Div className={styles.sidePart}>
+              {tasks.map((item, index) => {
+                return <Div className={styles.taskCard}>
+                  <TextBlock type='header'>{item.taskword}</TextBlock>
+                  <TextBlock type='noteItalic'>{item.description}</TextBlock>
+                </Div>
+              })}
             </Div>
           </Div>
-          <Div className={styles.sidePart}>
-            {tasks.map( (item, index) => {
-              return <Div className={styles.taskCard}>
-                <TextBlock type='header'>{item.taskword}</TextBlock>
-                <TextBlock type='noteItalic'>{item.description}</TextBlock>
-              </Div>
-            })}
-          </Div>
-        </Div>
-      </FullscreenWrapper>
+        </AnimatedWrapper>
+
+        </FullscreenWrapper>
     );
   }
 }

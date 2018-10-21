@@ -13,7 +13,7 @@ class Avatar extends React.PureComponent<Props> {
     const { source, size, className } = this.props;
 
     return (
-      <Div className={[styles.avatarWrapper, className]}>
+      <Div className={[styles.avatarWrapper, className, size === 'navbar' && styles.avatarUserFrame]}>
         <img src={source} className={styles.avatar} alt='avatar' />
       </Div>
     );

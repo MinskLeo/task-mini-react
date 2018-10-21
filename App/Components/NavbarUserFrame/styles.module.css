@@ -1,0 +1,36 @@
+.userFrameWrapper {
+  width: 250px;
+  height: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 20px;
+  cursor: pointer;
+  
+  transition: .3s;
+}
+
+.userFrameWrapper:hover {
+  background: #eee;
+}
+
+.avatarContainer {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textContainer {
+  flex: 6;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textLabel {
+  font-size: 20px;
+  color: #333;
+}
